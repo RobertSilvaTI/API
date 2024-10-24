@@ -8,8 +8,9 @@ const consultaVendedores = async (_request, response) => {
 };
 
 const inserirVendedor = async (request, response) => {
-    //const insercaovendedor = await vendedorModel.inserirVendedor();
-    return response.status(201).json({message: 'Ok'});
+    const insercaovendedor = await vendedorModel.inserirVendedor(request.body);
+
+    return response.status(201).json(insercaovendedor);
 };
 
 module.exports = {
