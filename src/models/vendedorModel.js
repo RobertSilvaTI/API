@@ -16,7 +16,13 @@ const inserirVendedor = async (vendedor) => {
     return {InsertId: insercaoVendedor.insertId};
 };
 
+const excluirVendedor = async (codigo) => {
+    const [excluiVendedor] = await connection.execute('delete from vendedor where codigo = ?', [codigo]);
+    return excluiVendedor;
+};
+
 module.exports = {
     consultaVendedores,
-    inserirVendedor
+    inserirVendedor,
+    excluirVendedor
 };

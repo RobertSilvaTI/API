@@ -1,4 +1,4 @@
-const { response } = require('express');
+const { response, request } = require('express');
 const vendedorModel = require('../models/vendedorModel.js');
 
 const consultaVendedores = async (_request, response) => {
@@ -13,7 +13,15 @@ const inserirVendedor = async (request, response) => {
     return response.status(201).json(insercaovendedor);
 };
 
+const excluirVendedor = async (request, response) => {
+    const { codigo } = request.params;
+
+    await vendedorModel.excluirVendedor(codigo);
+    return response.status(204).json();
+};
+
 module.exports = {
     consultaVendedores,
-    inserirVendedor
+    inserirVendedor,
+    excluirVendedor
 };
