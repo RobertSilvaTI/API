@@ -20,8 +20,16 @@ const excluirVendedor = async (request, response) => {
     return response.status(204).json();
 };
 
+const atualizarVendedor = async (request, response) => {
+    const { codigo } = request.params;
+
+    await vendedorModel.atualizarVendedor(codigo, request.body);
+    return response.status(204).json();
+};
+
 module.exports = {
     consultaVendedores,
     inserirVendedor,
-    excluirVendedor
+    excluirVendedor,
+    atualizarVendedor
 };

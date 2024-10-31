@@ -21,8 +21,18 @@ const excluirVendedor = async (codigo) => {
     return excluiVendedor;
 };
 
+const atualizarVendedor = async (codigo, vendedor) => {
+    const { nome, senha, email } = vendedor;
+    
+    const query = 'update vendedor set nome = ?, senha = ?, email = ? where codigo = ?';
+    
+    const [atualizaVendedor] = await connection.execute(query, [nome, senha, email, codigo]);
+    return atualizaVendedor;
+};
+
 module.exports = {
     consultaVendedores,
     inserirVendedor,
-    excluirVendedor
+    excluirVendedor,
+    atualizarVendedor
 };
